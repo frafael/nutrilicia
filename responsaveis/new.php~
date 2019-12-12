@@ -97,7 +97,7 @@
                 </label>
                 
                 <div class="actions">
-                    <button type="button" onclick="submitForm('index.php?status=1');">Gravar</button>
+                    <button type="button" onclick="submitForm(index.php?status=1);">Gravar</button>
                     <button type="button" class="secondary" onclick="window.location='index.php';">Cancelar</button>
                 </div>
             </form>
