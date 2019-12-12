@@ -2,7 +2,7 @@
 
         <script>  
             function remover(id) {
-                popup("Deseja excluir a unidade?",
+                popup("Deseja excluir o modelo de contrato?",
                     [
                         {"name": "Sim", "action": function(){
                             $.get( "remove.php?id="+id)
@@ -27,20 +27,20 @@
 
         <div class="content" style="padding-top: 70px;">  
             <div class="title">
-                Unidades
+                Contratos
                 
-                <a class="button" href="new.php">Nova Unidade</a>
+                <a class="button" href="new.php">Novo contrato</a>
             </div>
             
             <?php
                 if (isset($_GET['status']) && $_GET['status'] == '1' )
-                    echo '<div class="msg">Unidade inserida com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
+                    echo '<div class="msg">Contrato inserido com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
 
                 if (isset($_GET['status']) && $_GET['status'] == '2' )
-                    echo '<div class="msg">Unidade excluída com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
+                    echo '<div class="msg">Contrato excluído com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
 
                 if (isset($_GET['status']) && $_GET['status'] == '3' )
-                    echo '<div class="msg">Unidade atualizada com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
+                    echo '<div class="msg">Contrato atualizad0 com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
             ?>
 
             <?php
@@ -53,7 +53,8 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Unidade</th>                 
+                        <th>Unidade</th>
+                        <th>Ano</th>                 
                         <th width="85px">Ações</th>
                     </tr>
                 </thead>
@@ -64,6 +65,9 @@
                     <tr id="<?php echo $row['id']; ?>" class="" style="">
                         <td>
                             <div class="descricao"><?php echo $row['descricao']; ?></div>                            
+                        </td>
+                        <td>
+                            <div class="ano"><?php echo $row['ano']; ?></div>                            
                         </td>
                         <td>
                                <div class="actions">
@@ -83,7 +87,7 @@
             <div id="pagination"></div>
             <?php
                     } else {
-                            echo ' <div class="no-results"><i class="fa fa-search"></i> Não existem responsáveis a serem listados.</div>';
+                            echo ' <div class="no-results"><i class="fa fa-search"></i> Não existem contratos a serem listados.</div>';
                     }
                 }                   
             ?>

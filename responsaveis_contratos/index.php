@@ -2,15 +2,16 @@
 
         <script>  
             function remover(id) {
-                popup("Deseja excluir a unidade?",
+                popup("Deseja excluir o aluno?",
                     [
                         {"name": "Sim", "action": function(){
                             $.get( "remove.php?id="+id)
                               .done(function( data ) {
                                 if(data == '') {
-                                    window.location.href= 'index.php?status=2&page='+page;
-                                } else {
                                     console.log(data);
+                                    window.location.href= 'index.php?status=2&page='+page+'&responsavel_id=<?php echo $_GET['responsavel_id']; ?>';
+                                } else {
+                                    
                                     alert('Não foi possível realizar a operação.');                    
                                 }
                               });
@@ -23,37 +24,44 @@
                         }}
                     ]);
             }
+            
+            function contratos(id) {
+                window.location.href = 'contratos.php?responsavel_id='+id;
+            }
         </script>
 
         <div class="content" style="padding-top: 70px;">  
             <div class="title">
-                Unidades
+                Alunos
                 
-                <a class="button" href="new.php">Nova Unidade</a>
+                <a class="button" href="new.php?responsavel_id=<?php echo $_GET['responsavel_id'];?>">Novo Aluno</a>
             </div>
             
             <?php
                 if (isset($_GET['status']) && $_GET['status'] == '1' )
-                    echo '<div class="msg">Unidade inserida com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
+                    echo '<div class="msg">Aluno inserido com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
 
                 if (isset($_GET['status']) && $_GET['status'] == '2' )
-                    echo '<div class="msg">Unidade excluída com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
+                    echo '<div class="msg">Aluno excluído com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
 
                 if (isset($_GET['status']) && $_GET['status'] == '3' )
-                    echo '<div class="msg">Unidade atualizada com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
+                    echo '<div class="msg">Aluno atualizado com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
             ?>
 
             <?php
-                $sql = "SELECT * FROM unidade u ";
+                if(isset($_GET['responsavel_id']) and $_GET['responsavel_id'] != '')
+                    $sql = "SELECT * FROM alunos where responsavel_id = ".$_GET['responsavel_id'];
+                else
+                    echo "<script>window.location.href='../responsaveis/index.php';</script>";
 
                 if($result = mysqli_query($connect, $sql)){
+                    
                     if(mysqli_num_rows($result) > 0){
-                        
             ?>
             <table>
                 <thead>
                     <tr>
-                        <th>Unidade</th>                 
+                        <th>Aluno</th>              
                         <th width="85px">Ações</th>
                     </tr>
                 </thead>
@@ -63,10 +71,10 @@
                     ?>
                     <tr id="<?php echo $row['id']; ?>" class="" style="">
                         <td>
-                            <div class="descricao"><?php echo $row['descricao']; ?></div>                            
+                            <div class="nome"><?php echo $row['nome']; ?></div>                            
                         </td>
                         <td>
-                               <div class="actions">
+                            <div class="actions">
                                      <i title="Editar" onclick="window.location.href='edit.php?id=<?php echo $row['id']; ?>';" class="fa fa-pencil" aria-hidden="true"></i>
                                      <i title="Remover" onclick="remover(<?php echo $row['id']; ?>)" class="fa fa-trash remove" aria-hidden="true"></i>
                             </div>
@@ -82,12 +90,12 @@
             </table>
             <div id="pagination"></div>
             <?php
+
                     } else {
-                            echo ' <div class="no-results"><i class="fa fa-search"></i> Não existem responsáveis a serem listados.</div>';
+                            echo ' <div class="no-results"><i class="fa fa-search"></i> Não existem alunos para esse responsável listados.</div>';
                     }
                 }                   
             ?>
 
         </div>
-
 <?php include '../footer.php'; ?>

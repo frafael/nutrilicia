@@ -6,11 +6,11 @@ $connect = mysqli_connect('localhost','root','', 'nutrilicia');
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
     if($id != '') {
-        $query = "DELETE from responsaveis where id = $id";
+        $query = "DELETE from unidade where id = $id";
 
        if (mysqli_query($connect, $query)) {
        } else {
-          echo "Erro ao excluir responsável " . mysqli_error($connect);
+          echo "Erro ao excluir unidade " . mysqli_error($connect);
        }
        mysqli_close($connect);
     } else {
