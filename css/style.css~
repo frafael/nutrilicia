@@ -1,0 +1,301 @@
+body {
+    background: url('../img/background.png') #e6e6e6 !important;            
+}   
+
+.content {
+    min-width: 800px;
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 40px auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.logo {
+    width: 125px;
+}
+
+body {
+    margin: 0;   
+    font-family: "Roboto", sans-serif;         
+}
+
+.bar {
+    height: 74px;
+    background: #4CAF50;
+}
+.bar .logo {
+    margin: 10px 70px;
+    width: 100px;
+    text-align: center;
+}            
+.bar .content-bar {
+    position: relative;
+    text-align: center;
+    width: 910px;
+    margin: 0 auto;  
+    z-index: 2;         
+}
+.bar .menu {
+    position: absolute;
+    text-align: left;   
+    top: 28px;         
+}
+.bar .menu .action { color: white; cursor: pointer; font-size: 18px; }
+.bar .menu .action:hover { color: white; }
+.bar .menu .action:hover i { color: #2a7539 }
+.bar .menu #active, .bar .menu .itens { display: none; }
+.bar #active:checked ~ .itens {
+    display: block;
+    
+    background: white;
+    border-radius: 2px;
+    padding: 5px 0;
+    box-shadow: 0px 0px 4px #c1c1c1;
+    margin-top: 10px;
+}
+.bar .menu .itens { min-width: 200px; }
+.bar .menu .itens .item {
+    padding: 8px 15px;
+    cursor: pointer;            
+}
+.bar .menu .itens .item:hover, .bar .menu .itens .item:hover i {
+    background: #2a7539;
+    color: white !important;       
+}
+.bar .menu .itens i {
+    width: 22px;
+    color: #2a7439;            
+}
+
+.bar .search {
+    position: absolute;
+    right: 0;
+    top: 24px;            
+}
+
+.bar .search i {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: white;
+}
+
+.bar .search input:focus ~ i {
+    color: #2b773a;
+}
+
+.bar .search input::placeholder {
+    color: #2b773a;            
+}
+
+.bar .search input {
+    border: none;
+    border-radius: 2px;
+    padding: 7px 5px 5px 10px;
+    width: 100px;
+    background: #2b773a;
+
+    -webkit-transition: width .5s; /* Safari prior 6.1 */
+    transition: width .5s;
+}
+
+.bar .search input:focus, .bar.search .search input {
+    outline: none;
+    width: 200px;
+    background: white;
+    color: gray;
+}
+
+/*.bar .search input:focus ~ button, .search select:focus ~ button, .search input:focus ~ select,
+.bar .search select:focus, .search select:hover, .search select:active,
+.bar .search button:focus, .search button:hover, .search button:active,
+.bar .search:active button, .search:focus button {
+    display: block;            
+} */
+
+.bar .search button {
+    /*display: none;*/
+    color: white;
+    background: #4CAF50;
+    border: none;
+    border-radius: 3px;
+    padding: 6px 10px;
+    margin-left: 3px;
+    cursor: pointer;
+    float: right;
+}
+.bar .search button:hover { 
+    background: #2b773c;
+}
+
+.bar .search select {
+    /*display: none;*/
+    outline: none;
+    color: white;
+    background: #4CAF50;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+.bar .search select:hover { 
+    background: #2b773c;
+}
+
+table {
+    width: 100%;            
+}
+
+table thead {
+    background: #4caf50;
+    color: white;
+}
+
+table thead th {
+    padding: 7px;            
+}
+table tbody td {
+    padding: 7px; 
+    position: relative;           
+}
+table tbody tr.odd td {
+    background: #eaeaea;            
+}
+table tbody tr:hover td {
+    background: #dcefdd;
+    color: #4caf50;  
+    cursor: pointer;          
+}
+table tbody tr:hover .actions i {
+    display: block;            
+}
+table .actions {
+    display: flex;
+    /*position: absolute;*/
+    top: 0;
+    right: 5px;
+    color: #2a7439 !important;
+} 
+table .actions i {
+    /*display: none;*/
+    width: 14px;
+    padding: 6px 7px;
+    margin: 2px 0;
+    border-radius: 50%;            
+}
+table .actions i.remove {
+    display: block !important;
+}
+table .actions i:hover {
+    background: #bde2c4;           
+}
+.tag {
+    display: inline;
+    font-size: 12px;
+    background: #4caf50;
+    color: white;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-weight: bold;            
+}
+
+/*** FORMULARIOS ****/
+#form {
+    text-align: left;            
+}
+#form input, #form textarea, #form select  {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;            
+}
+#form input:focus, #form textarea:focus, #form select:focus {
+    border: 1px solid #4caf50;           
+}
+#form input {
+    width: 300px;       
+}
+#form textarea {
+    width: 600px;   
+    vertical-align: middle;    
+}
+#form label {
+    width: 100%;
+    display: block;            
+}
+#form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+   
+    margin: 5px;
+    width: 100px;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+#form button.secondary {
+    background: #c1c1c1;
+} 
+#form button.secondary:hover {
+    background: #adadad;
+}            
+#form button:hover {
+    background: #43A047;            
+}
+#form {
+    margin-top: 35px;            
+}
+#form label span {
+    min-width: 180px;
+    display: inline-block;            
+}
+#form .actions {
+    text-align: center; 
+    margin-top: 10px;           
+}
+#form .session {
+    margin: 15px 10px 15px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #e1e1e1;
+    color: #4caf50;
+    font-weight: bold;            
+}
+.content .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 80px - 4px);
+    text-align: left;
+    padding: 15px 40px;
+    border-left: 4px solid #4caf50;
+    background: #f9f9f9;
+    font-weight: bold;
+    color: #2b763a;
+    box-shadow: 0px 1px 1px #e2e2e2;            
+}
+.alunos {
+    border-bottom: 1px solid #ececec;            
+}
+.alunos .aluno {
+    padding-left: 20px;
+    border-left: 5px solid #ececec;
+    margin-bottom: 15px;
+}
+
+.more.aluno { margin: 10px 0 !important; };            
+}

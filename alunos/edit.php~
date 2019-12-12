@@ -19,8 +19,8 @@
                     <span>Unidade: </span>
                     <select name="unidade">
                         <option value='null'>Selecione...</option>
-                        <!-- <option>FB Júnior Sul</option>
-                        <option>FB Júnior Eusébio</option> -->
+                        <option>FB Júnior Sul</option>
+                        <option>FB Júnior Eusébio</option>
                         <?php
                             $sql = "SELECT * FROM unidade";
                             if($result = mysqli_query($connect, $sql)){
@@ -73,9 +73,9 @@
                     <span>Modelo: </span>
                     <select name="contrato">
                         <option value='null'>Selecione...</option>
-                        <!-- <option>2020</option>
+                        <option>2020</option>
                         <option>2020 (2 ALUNOS)</option>
-                        <option>2020 (3 ALUNOS)</option> -->
+                        <option>2020 (3 ALUNOS)</option>
                         <?php
                             $sql = "SELECT * FROM contratos";
                             if($result = mysqli_query($connect, $sql)){

@@ -35,7 +35,7 @@ body {
 .bar .content-bar {
     position: relative;
     text-align: center;
-    width: 910px;
+    width: 860px;
     margin: 0 auto;  
     z-index: 2;         
 }
@@ -80,7 +80,6 @@ body {
 .bar .search i {
     position: absolute;
     top: 5px;
-    left: 10px;
     color: white;
 }
 
@@ -299,3 +298,573 @@ table .actions i:hover {
 
 .more.aluno { margin: 10px 0 !important; };            
 }
+
+
+            #pagination { margin-top: 15px; }
+            #pagination a {
+                background: #f1f1f1;
+                padding: 3px 10px;
+                border-radius: 2px;
+                margin: 3px;
+                cursor: pointer;
+             }
+             #pagination a.active {
+                background: #4caf50;
+                color: white;
+             }
+             .total_num_row {
+                color: #4caf50;
+                margin-top: 10px;
+                font-size: 15px;
+             }            
+             .msg {
+                position: relative;
+                color: #2b763a;
+                font-weight: bold;
+                border-radius: 4px;
+                background: #dcefdd;
+                padding: 15px 12px;
+                margin-bottom: 15px;                
+             }
+                
+             .msg i {
+                position: absolute;
+                top: 15px;
+                right: 12px;
+                padding: 1px 3px 2px 3px;              
+             }
+
+            .msg i:hover {
+                color: white;
+                background: #2b763a;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+
+            .title .button {
+                color: white;
+                background: #8bce66;
+                border: none;
+                border-radius: 3px;
+                padding: 6px 10px;
+                margin-left: 3px;
+                cursor: pointer;
+                text-decoration: none;
+                font-size: 14px;
+                position: absolute;
+                top: 11px;
+                right: 46px;
+            }
+            .title .button:hover { 
+                background: #2b773c;
+            }
+            .popup {
+                min-width: 300px;
+                max-width: 700px;
+                min-height: 80px;
+                background: white;
+                padding: 10px;
+                z-index: 999;
+                position: fixed;
+                left: 50%;
+                margin-left: -165px;
+                top: 50%;
+                margin-top: -115px;
+                border-radius: 5px;
+                box-shadow: 1px 1px 4px #C1C1C1;
+            }
+            .popup .text{
+                min-height: 30px;
+                font-weight: bold;
+                text-align: center;
+                padding: 20px 0;
+            }
+            .popup .buttons {
+                text-align: center;            
+            }
+            .popup-background {
+                position: fixed;      
+                background: white;
+                opacity: 0.5;                
+                z-index: 998;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;      
+            }
+            
+            .popup button {
+                color: white;
+                background: #8bce66;
+                border: none;
+                border-radius: 3px;
+                padding: 6px 10px;
+                margin-left: 3px;
+                cursor: pointer;
+                text-decoration: none;
+                font-size: 14px;
+            }
+            .popup button:hover { 
+                background: #2b773c;
+            }
+            .no-results {
+                margin-top: 15px;
+                color: #b1b1b1;
+                font-weight: bold;
+                padding: 25px;
+                border: 2px dashed #e2e2e2;
+            }
+            
+            .bar.search {
+                overflow: hidden;             
+                height: 0px;
+                background: #8bce66;  
+
+                transition: height .5s;         
+            }
+    
+            .bar.search.visible {
+                height: 45px;           
+            }
+            
+            .bar.search .search {
+                position: relative;            
+                right: 0;
+                top: 9px;  
+                float: right;          
+            }
+
+            .bar .search i {
+                cursor: pointer;            
+            }
+            
+            .bar .search i:hover {
+                cursor: pointer;   
+                color: #2a7539;         
+            }
+            #pagination { margin-top: 15px; }
+            #pagination a {
+                background: #f1f1f1;
+                padding: 3px 10px;
+                border-radius: 2px;
+                margin: 3px;
+                cursor: pointer;
+             }
+             #pagination a.active {
+                background: #4caf50;
+                color: white;
+             }
+             .total_num_row {
+                color: #4caf50;
+                margin-top: 10px;
+                font-size: 15px;
+             }            
+             .msg {
+                position: relative;
+                color: #2b763a;
+                font-weight: bold;
+                border-radius: 4px;
+                background: #dcefdd;
+                padding: 15px 12px;
+                margin-bottom: 15px;                
+             }
+                
+             .msg i {
+                position: absolute;
+                top: 15px;
+                right: 12px;
+                padding: 1px 3px 2px 3px;              
+             }
+
+            .msg i:hover {
+                color: white;
+                background: #2b763a;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+
+            .title .button {
+                color: white;
+                background: #8bce66;
+                border: none;
+                border-radius: 3px;
+                padding: 6px 10px;
+                margin-left: 3px;
+                cursor: pointer;
+                text-decoration: none;
+                font-size: 14px;
+                position: absolute;
+                top: 11px;
+                right: 46px;
+            }
+            .title .button:hover { 
+                background: #2b773c;
+            }
+            .popup {
+                min-width: 300px;
+                max-width: 700px;
+                min-height: 80px;
+                background: white;
+                padding: 10px;
+                z-index: 999;
+                position: fixed;
+                left: 50%;
+                margin-left: -165px;
+                top: 50%;
+                margin-top: -115px;
+                border-radius: 5px;
+                box-shadow: 1px 1px 4px #C1C1C1;
+            }
+            .popup .text{
+                min-height: 30px;
+                font-weight: bold;
+                text-align: center;
+                padding: 20px 0;
+            }
+            .popup .buttons {
+                text-align: center;            
+            }
+            .popup-background {
+                position: fixed;      
+                background: white;
+                opacity: 0.5;                
+                z-index: 998;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;      
+            }
+            
+            .popup button {
+                color: white;
+                background: #8bce66;
+                border: none;
+                border-radius: 3px;
+                padding: 6px 10px;
+                margin-left: 3px;
+                cursor: pointer;
+                text-decoration: none;
+                font-size: 14px;
+            }
+            .popup button:hover { 
+                background: #2b773c;
+            }
+            .no-results {
+                margin-top: 15px;
+                color: #b1b1b1;
+                font-weight: bold;
+                padding: 25px;
+                border: 2px dashed #e2e2e2;
+            }
+            
+            .bar.search {
+                overflow: hidden;             
+                height: 0px;
+                background: #8bce66;  
+
+                transition: height .5s;         
+            }
+    
+            .bar.search.visible {
+                height: 45px;           
+            }
+            
+            .bar.search .search {
+                position: relative;            
+                right: 0;
+                top: 9px;  
+                float: right;          
+            }
+
+            .bar .search i {
+                cursor: pointer;            
+            }
+            
+            .bar .search i:hover {
+                cursor: pointer;   
+                color: #2a7539;         
+            }
+            #pagination { margin-top: 15px; }
+            #pagination a {
+                background: #f1f1f1;
+                padding: 3px 10px;
+                border-radius: 2px;
+                margin: 3px;
+                cursor: pointer;
+             }
+             #pagination a.active {
+                background: #4caf50;
+                color: white;
+             }
+             .total_num_row {
+                color: #4caf50;
+                margin-top: 10px;
+                font-size: 15px;
+             }            
+             .msg {
+                position: relative;
+                color: #2b763a;
+                font-weight: bold;
+                border-radius: 4px;
+                background: #dcefdd;
+                padding: 15px 12px;
+                margin-bottom: 15px;                
+             }
+                
+             .msg i {
+                position: absolute;
+                top: 15px;
+                right: 12px;
+                padding: 1px 3px 2px 3px;              
+             }
+
+            .msg i:hover {
+                color: white;
+                background: #2b763a;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+
+            .title .button {
+                color: white;
+                background: #8bce66;
+                border: none;
+                border-radius: 3px;
+                padding: 6px 10px;
+                margin-left: 3px;
+                cursor: pointer;
+                text-decoration: none;
+                font-size: 14px;
+                position: absolute;
+                top: 11px;
+                right: 46px;
+            }
+            .title .button:hover { 
+                background: #2b773c;
+            }
+            .popup {
+                min-width: 300px;
+                max-width: 700px;
+                min-height: 80px;
+                background: white;
+                padding: 10px;
+                z-index: 999;
+                position: fixed;
+                left: 50%;
+                margin-left: -165px;
+                top: 50%;
+                margin-top: -115px;
+                border-radius: 5px;
+                box-shadow: 1px 1px 4px #C1C1C1;
+            }
+            .popup .text{
+                min-height: 30px;
+                font-weight: bold;
+                text-align: center;
+                padding: 20px 0;
+            }
+            .popup .buttons {
+                text-align: center;            
+            }
+            .popup-background {
+                position: fixed;      
+                background: white;
+                opacity: 0.5;                
+                z-index: 998;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;      
+            }
+            
+            .popup button {
+                color: white;
+                background: #8bce66;
+                border: none;
+                border-radius: 3px;
+                padding: 6px 10px;
+                margin-left: 3px;
+                cursor: pointer;
+                text-decoration: none;
+                font-size: 14px;
+            }
+            .popup button:hover { 
+                background: #2b773c;
+            }
+            .no-results {
+                margin-top: 15px;
+                color: #b1b1b1;
+                font-weight: bold;
+                padding: 25px;
+                border: 2px dashed #e2e2e2;
+            }
+            
+            .bar.search {
+                overflow: hidden;             
+                height: 0px;
+                background: #8bce66;  
+
+                transition: height .5s;         
+            }
+    
+            .bar.search.visible {
+                height: 45px;           
+            }
+            
+            .bar.search .search {
+                position: relative;            
+                right: 0;
+                top: 9px;  
+                float: right;          
+            }
+
+            .bar .search i {
+                cursor: pointer;            
+            }
+            
+            .bar .search i:hover {
+                cursor: pointer;   
+                color: #2a7539;         
+            }
+            #pagination { margin-top: 15px; }
+            #pagination a {
+                background: #f1f1f1;
+                padding: 3px 10px;
+                border-radius: 2px;
+                margin: 3px;
+                cursor: pointer;
+             }
+             #pagination a.active {
+                background: #4caf50;
+                color: white;
+             }
+             .total_num_row {
+                color: #4caf50;
+                margin-top: 10px;
+                font-size: 15px;
+             }            
+             .msg {
+                position: relative;
+                color: #2b763a;
+                font-weight: bold;
+                border-radius: 4px;
+                background: #dcefdd;
+                padding: 15px 12px;
+                margin-bottom: 15px;                
+             }
+                
+             .msg i {
+                position: absolute;
+                top: 15px;
+                right: 12px;
+                padding: 1px 3px 2px 3px;              
+             }
+
+            .msg i:hover {
+                color: white;
+                background: #2b763a;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+
+            .title .button {
+                color: white;
+                background: #8bce66;
+                border: none;
+                border-radius: 3px;
+                padding: 6px 10px;
+                margin-left: 3px;
+                cursor: pointer;
+                text-decoration: none;
+                font-size: 14px;
+                position: absolute;
+                top: 11px;
+                right: 46px;
+            }
+            .title .button:hover { 
+                background: #2b773c;
+            }
+            .popup {
+                min-width: 300px;
+                max-width: 700px;
+                min-height: 80px;
+                background: white;
+                padding: 10px;
+                z-index: 999;
+                position: fixed;
+                left: 50%;
+                margin-left: -165px;
+                top: 50%;
+                margin-top: -115px;
+                border-radius: 5px;
+                box-shadow: 1px 1px 4px #C1C1C1;
+            }
+            .popup .text{
+                min-height: 30px;
+                font-weight: bold;
+                text-align: center;
+                padding: 20px 0;
+            }
+            .popup .buttons {
+                text-align: center;            
+            }
+            .popup-background {
+                position: fixed;      
+                background: white;
+                opacity: 0.5;                
+                z-index: 998;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;      
+            }
+            
+            .popup button {
+                color: white;
+                background: #8bce66;
+                border: none;
+                border-radius: 3px;
+                padding: 6px 10px;
+                margin-left: 3px;
+                cursor: pointer;
+                text-decoration: none;
+                font-size: 14px;
+            }
+            .popup button:hover { 
+                background: #2b773c;
+            }
+            .no-results {
+                margin-top: 15px;
+                color: #b1b1b1;
+                font-weight: bold;
+                padding: 25px;
+                border: 2px dashed #e2e2e2;
+            }
+            
+            .bar.search {
+                overflow: hidden;             
+                height: 0px;
+                background: #8bce66;  
+
+                transition: height .5s;         
+            }
+    
+            .bar.search.visible {
+                height: 45px;           
+            }
+            
+            .bar.search .search {
+                position: relative;            
+                right: 0;
+                top: 9px;  
+                float: right;          
+            }
+
+            .bar .search i {
+                cursor: pointer;            
+            }
+            
+            .bar .search i:hover {
+                cursor: pointer;   
+                color: #2a7539;         
+            }

@@ -19,7 +19,7 @@ $telefone = $_POST['telefone'];
 $unidade = $_POST['unidade'];
 
 if(isset($_POST['id'])) {
-    $query = "UPDATE responsaveis set nome = '$nome', nacionalidade='$nacionalidade', nascimento='$nascimento', rg='$rg', cpf='$cpf', relacionamento='$relacionamento', email='$email', endereco='$endereco', cep='$cep', telefone='$telefone', unidade_id=$unidade where id='$id';";   
+    $query = "UPDATE responsaveis set nome = '$nome', nacionalidade='$nacionalidade', nascimento='$nascimento', rg='$rg', cpf='$cpf', relacionamento='$relacionamento', email='$email', endereco='$endereco', cep='$cep', telefone='$telefone' where id='$id';";
     $update = mysqli_query($connect, $query);
 } else {
     $query = "INSERT INTO responsaveis(nome, nacionalidade, nascimento, rg, cpf, relacionamento, email, endereco, cep, telefone, unidade_id) VALUES ('$nome', '$nacionalidade', '$nascimento', '$rg', '$cpf', '$relacionamento', '$email', '$endereco', '$cep', '$telefone', $unidade)";  
