@@ -49,13 +49,13 @@
 
             <?php
                 if(isset($_GET['responsavel_id']) and $_GET['responsavel_id'] != '')
-                    $sql = "SELECT * FROM responsaveis where id = ".$_GET['responsavel_id'];
+                    $sql = "SELECT * FROM alunos where responsavel_id = ".$_GET['responsavel_id'];
                 else
                     echo "<script>window.location.href='../responsaveis/index.php';</script>";
 
                 if($result = mysqli_query($connect, $sql)){
+                    
                     if(mysqli_num_rows($result) > 0){
-                        
             ?>
             <table>
                 <thead>
@@ -89,12 +89,12 @@
             </table>
             <div id="pagination"></div>
             <?php
+
                     } else {
-                            echo ' <div class="no-results"><i class="fa fa-search"></i> Não existem alunos a serem listados.</div>';
+                            echo ' <div class="no-results"><i class="fa fa-search"></i> Não existem alunos para esse responsável listados.</div>';
                     }
                 }                   
             ?>
 
         </div>
-
 <?php include '../footer.php'; ?>
