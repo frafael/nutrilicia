@@ -91,7 +91,7 @@ $connect = mysqli_connect('localhost','root','', 'nutrilicia');
                 left: 50%;
                 margin-left: -165px;
                 top: 50%;
-                margin-top: -50px;
+                margin-top: -115px;
                 border-radius: 5px;
                 box-shadow: 1px 1px 4px #C1C1C1;
             }
@@ -246,12 +246,96 @@ $connect = mysqli_connect('localhost','root','', 'nutrilicia');
 
                         <select name="unidade">
                                 <option value="">Todas Unidades</option>
+                                <?php
+                                    $sql = "SELECT * FROM unidade";
+                                    $unidade = isset($_GET['unidade'])?$_GET['unidade']:'';
+                                    if($result = mysqli_query($connect, $sql)){
+                                        if(mysqli_num_rows($result) > 0){
+                                            while($row = mysqli_fetch_array($result)){
+                                                echo "<option value='".$row['id']."' ".$_GET['unidade']==$row['id']?"selected='selected'":"".">";
+                                                    echo $row['descricao'];
+                                                echo "</option>";
+                                            }
+
+                                            // Free result set
+                                            mysqli_free_result($result);
+                                        } else{
+                                            echo "";
+                                        }
+                                    }
+                                ?>
                         </select>
 
                         <button type="submit">BUSCAR</button>
                     </form>
                 </div>
             </div>
+        </div>
+
+        <div class="content" style="padding-top: 70px;">  
+            <div class="title">
+                Responsáveis Financeiros
+                
+                <a class="button" href="http://localhost/nutrilicia/form-responsavel.php">Novo Responsável</a>
+            </div>
+            
+            <?php
+                $sql = "SELECT r.nome as nome, r.id as id, u.descricao as unidade FROM responsaveis r left join unidade u on u.id = r.unidade_id";
+                
+                $sql = $sql.' WHERE 1=1';
+                if(isset($_GET['search']))
+                    $sql = $sql." and r.nome like '%".$_GET['search']."%'";
+
+                if(isset($_GET['unidade']) and $_GET['unidade'] != '')
+                    $sql = $sql." and u.id = ".$_GET['unidade'];
+
+                if($result = mysqli_query($connect, $sql)){
+                    if(mysqli_num_rows($result) > 0){
+                        
+            ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Responsável</th>
+                        <th width="150px">Unidade</th>                 
+                        <th width="85px">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        while($row = mysqli_fetch_array($result)){
+                    ?>
+                    <tr id="<?php echo $row['id']; ?>" class="" style="">
+                        <td>
+                            <div class="nome"><?php echo $row['nome']; ?></div>                            
+                        </td>
+                        <td>
+                            <?php echo $row['unidade']; ?>
+                        </td>
+                        <td>
+                            <div class="actions">
+                                     <i title="Editar" class="fa fa-pencil" aria-hidden="true"></i>
+                                     <i title="Contratos" class="fa fa-files-o" aria-hidden="true"></i>
+                                     <i title="Remover" onclick="remover(<?php echo $row['id']; ?>)" class="fa fa-trash remove" aria-hidden="true"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+
+                        // Free result set
+                        mysqli_free_result($result);  
+                    ?>  
+                </tbody>
+            </table>
+            <div id="pagination"></div>
+            <?php
+                    } else {
+                            echo ' <div class="no-results"><i class="fa fa-search"></i> Não existem responsáveis a serem listados.</div>';
+                    }
+                }                   
+            ?>
+
         </div>
     <body>
 </html>
