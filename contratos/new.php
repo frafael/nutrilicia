@@ -2,7 +2,7 @@
 
         <div class="content">   
             <div class="title">
-                Nova Unidade
+                Novo Contrato
             </div>         
             <form id="form" method="post" action="save.php" enctype="multipart/form-data">            
                 <label><span>Descrição: </span><input type="text" name="descricao"/></label>

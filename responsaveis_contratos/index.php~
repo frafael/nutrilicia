@@ -2,7 +2,7 @@
 
         <script>  
             function remover(id) {
-                popup("Deseja excluir o contrato?",
+                popup("Deseja excluir o aluno?",
                     [
                         {"name": "Sim", "action": function(){
                             $.get( "remove.php?id="+id)
@@ -32,25 +32,25 @@
 
         <div class="content" style="padding-top: 70px;">  
             <div class="title">
-                Contratos do Responsável
+                Alunos
                 
                 <a class="button" href="new.php?responsavel_id=<?php echo $_GET['responsavel_id'];?>">Novo Aluno</a>
             </div>
             
             <?php
                 if (isset($_GET['status']) && $_GET['status'] == '1' )
-                    echo '<div class="msg">Contrato inserido com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
+                    echo '<div class="msg">Aluno inserido com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
 
                 if (isset($_GET['status']) && $_GET['status'] == '2' )
-                    echo '<div class="msg">Contrato excluído com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
+                    echo '<div class="msg">Aluno excluído com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
 
                 if (isset($_GET['status']) && $_GET['status'] == '3' )
-                    echo '<div class="msg">Contrato atualizado com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
+                    echo '<div class="msg">Aluno atualizado com sucesso! <i class="fa fa-close" onclick="$(\'.msg\').remove();"></i></div>';
             ?>
 
             <?php
                 if(isset($_GET['responsavel_id']) and $_GET['responsavel_id'] != '')
-                    $sql = "SELECT c.id as contrato_id, c.descricao as contrato_descricao, r.id as responsavel_id, r.nome as responsavel_nome FROM responsaveis_contratos rc left join responsavel r on r.id = rc.responsavel_id left join contrato c on c.id = rc.contrato_id where responsavel_id = ".$_GET['responsavel_id'];
+                    $sql = "SELECT * FROM alunos where responsavel_id = ".$_GET['responsavel_id'];
                 else
                     echo "<script>window.location.href='../responsaveis/index.php';</script>";
 
@@ -61,8 +61,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Responsável</th>              
-                        <th>Contrato</th>              
+                        <th>Aluno</th>              
                         <th width="85px">Ações</th>
                     </tr>
                 </thead>
@@ -70,19 +69,14 @@
                     <?php
                         while($row = mysqli_fetch_array($result)){
                     ?>
-                    <tr id="<?php echo $row['contrato_id']; ?>" class="" style="">
+                    <tr id="<?php echo $row['id']; ?>" class="" style="">
                         <td>
-                            <div class="responsavel"><?php echo $row['responsavel_nome']; ?></div>                            
-                        </td>
-                        <td>
-                            <div class="contrato"><?php echo $row['contrato_descricao']; ?></div>                            
+                            <div class="nome"><?php echo $row['nome']; ?></div>                            
                         </td>
                         <td>
                             <div class="actions">
-                                <i title="Editar" onclick="window.location.href='edit.php?responsavel_id=<?php echo $row['responsavel_id']; ?>&contrato_id=<?php echo $row['contrato_id']; ?>';" class="fa fa-pencil" aria-hidden="true"></i>
-                                <i title="Gerar arquivo" onclick="window.location.href='generate.php?responsavel_id=<?php echo $row['responsavel_id']; ?>&contrato_id=<?php echo $row['contrato_id']; ?>';" class="fa fa-file-word-o" aria-hidden="true"></i>
-                                <i title="Baixar contrato" onclick="window.location.href='download.php?responsavel_id=<?php echo $row['responsavel_id']; ?>&contrato_id=<?php echo $row['contrato_id']; ?>';" class="fa fa-download" aria-hidden="true"></i>
-                                <i title="Remover" onclick="remover(<?php echo $row['responsavel_id']; ?>, <?php echo $row['contrato_id']; ?>)" class="fa fa-trash remove" aria-hidden="true"></i>
+                                     <i title="Editar" onclick="window.location.href='edit.php?id=<?php echo $row['id']; ?>';" class="fa fa-pencil" aria-hidden="true"></i>
+                                     <i title="Remover" onclick="remover(<?php echo $row['id']; ?>)" class="fa fa-trash remove" aria-hidden="true"></i>
                             </div>
                         </td>
                     </tr>

@@ -4,6 +4,7 @@
 $connect = mysqli_connect('localhost','root','', 'nutrilicia');
 #$db = mysql_select_db('nutrilicia');
 
+$filename = '';
 if(isset($_POST['id'])) { 
     $id = $_POST['id'];
     $filename = $_POST['filename'];
@@ -44,14 +45,15 @@ if(isset($_POST['id'])) {
 
 $descricao = $_POST['descricao'];
 $ano = $_POST['ano'];
-$descricao = $_POST['descricao'];
 
 if(isset($_POST['id'])) {
     $query = "UPDATE contratos set descricao = '$descricao', ano = '$ano', filename = '$filename' where id='$id';";   
     $update = mysqli_query($connect, $query);
+    header('Location:index.php?status=3');
 } else {
     $query = "INSERT INTO contratos(descricao, ano, filename) VALUES ('$descricao', '$ano', '$filename')";  
     $insert_responsavel = mysqli_query($connect, $query);
+    header('Location:index.php?status=1');
 }
  
 /*if($insert){

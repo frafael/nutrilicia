@@ -3,23 +3,36 @@
 $connect = mysqli_connect('localhost','root','', 'nutrilicia');
 #$db = mysql_select_db('nutrilicia');
 
-if(isset($_POST['id'])) 
-    $id = $_POST['id'];
-
-$nome = $_POST['nome'];
-$serie = $_POST['serie'];
-$restricao = $_POST['restricao'];
-$nascimento = $_POST['nascimento'];
+$contrato_ = $_POST['contrato_id'];
 $responsavel_id = $_POST['responsavel_id'];
 
-if(isset($_POST['id'])) {
-    $query = "UPDATE alunos set nome = '$nome', nascimento='$nascimento', restricao='$rg', restricao='$restricao', responsavel_id='$responsavel_id' where id='$id';";   
-    $update = mysqli_query($connect, $query);
-} else {
-    $query = "INSERT INTO alunos(nome, serie, nascimento, restricao, responsavel_id) VALUES ('$nome', '$serie', '$restricao', '$nascimento', $responsavel_id)";      
-    $insert = mysqli_query($connect, $query);
 }
- 
+
+$pacote = $_POST['pacote'];
+$valor = $_POST['valor'];
+$pagamento = $_POST['pagamento'];
+$observacoes = $_POST['observacoes'];
+
+$filename = '';
+$sql = "SELECT * FROM contratos where id = $contrato";
+if($result = mysqli_query($connect, $sql)){
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_array($result)){
+            $fileName = $row['ano']."-". $responsavel_id . " - ".$nome.".docx";
+        }
+    }
+}
+
+$sql = "SELECT * FROM responsaveis_contratos where responsavel_id = $responsavel_id and contrato_id = $contrato";
+if($result = mysqli_query($connect, $sql)){
+    if(mysqli_num_rows($result) > 0){
+        $query = "UPDATE responsaveis_contratos set pacote = '$pacote', pacote = '$filename', valor='$valor', pagamento='$pagamento', restricao='$observacoes' where responsavel_id='$responsavel_id' and contrato_id='$contrato';";   
+        $update = mysqli_query($connect, $query);
+    } else {
+        $query = "INSERT INTO responsaveis_contratos(responsavel_id, contrato_id, date, filename, pacote, valor, pagamento, observacoes) VALUES ($responsavel_id,$contrato,now(),'$filename','$pacote','$valor','$pagamento','$observacoes')";
+        $insert = mysqli_query($connect, $query);        
+    }
+}
 /*if($insert){
   echo"<script language='javascript' type='text/javascript'>
   alert('Usuário cadastrado com sucesso!');window.location.

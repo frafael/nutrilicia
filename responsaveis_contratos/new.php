@@ -14,12 +14,49 @@
                     } else
                         echo "<script>window.location.href='../responsaveis/index.php';</script>";
                 ?>                
-
-                <label><span>Nome: </span><input type="text" name="nome"/></label>
-                <label><span>Série/FB2 ou Regular: </span><input type="text" name="serie"/></label>
-                <label><span>Data: </span><input type="text" class='date' name="nascimento"/></label>
-                <label><span>Restrição Alimentar: </span><input type="text" name="restricao"/></label>
+ 
+                <label><span>Pacote: </span><textarea name="pacote"/></textarea></label>
+                <label><span>Valor Total: </span><input type="text" class="money2" name="valor"/></label>
+                <label><span>Parcelamento: </span><input type="text" name="parcelamento"/></label>
+                <label>
+                    <span>Forma de Pagamento: </span>
+                    <select name="pagamento">
+                        <option value=''>Selecione...</option>
+                        <option value="VISTA">A vista</option>
+                        <option value="BOLETO">Boleto</option>
+                        <option value="CHEQUE">Cheque</option>
+                    </select>
+                </label>
+                <label><span>Observações: </span><textarea name="observacoes"/></textarea></label>
                 
+                <div class="session">CONTRATO</div>
+                <label>
+                    <span>Modelo: </span>
+                    <select name="contrato_id">
+                        <option value='null'>Selecione...</option>
+                        <!-- <option>2020</option>
+                        <option>2020 (2 ALUNOS)</option>
+                        <option>2020 (3 ALUNOS)</option> -->
+                        <?php
+                            $sql = "SELECT * FROM contratos";
+                            if($result = mysqli_query($connect, $sql)){
+                                if(mysqli_num_rows($result) > 0){
+                                    while($row = mysqli_fetch_array($result)){
+                                        echo "<option value='".$row['id']."'>";
+                                            echo $row['descricao'];
+                                        echo "</option>";
+                                    }
+
+                                    // Free result set
+                                    mysqli_free_result($result);
+                                } else{
+                                    echo "";
+                                }
+                            }
+                        ?>
+                    </select>
+                </label>
+
                 <div class="actions">
                     <button type="button" onclick="submitForm('index.php?status=1&responsavel_id=<?php echo $_GET['responsavel_id']; ?>');">Gravar</button>
                     <button type="button" class="secondary" onclick="window.location='index.php?responsavel_id=<?php echo $_GET['responsavel_id']; ?>';">Cancelar</button>
