@@ -1,0 +1,138 @@
+var num_pages = 0;
+var page = 1;
+function pagination(){
+    var req_num_row=10;
+    var $tr=jQuery('tbody tr');
+    var total_num_row=$tr.length;
+    num_pages=0;
+    if(total_num_row % req_num_row ==0){
+        num_pages=total_num_row / req_num_row;
+    }
+    if(total_num_row % req_num_row >=1){
+        num_pages=total_num_row / req_num_row;
+        num_pages++;
+        num_pages=Math.floor(num_pages++);
+    }
+    
+    for(var i=1; i<=num_pages; i++){
+        jQuery('#pagination').append("<a class='"+i+"'>"+i+"</a>");
+        if(Number.isInteger(i/10)) {
+            
+        }
+    }
+
+    if(num_pages > 0) {
+        jQuery('#pagination').prepend("<a class='prev'><</a>");
+        jQuery('#pagination').append("<a class='next'>></a>");     
+        if(num_pages > 10) {
+           jQuery('#pagination').prepend("<a class='prev_page'><<</a>");
+           jQuery('#pagination').append("<a class='next_page'>>></a>");
+        }
+    }
+
+    $tr.each(function(i){
+        jQuery(this).hide();
+        if(i+1 <= req_num_row){
+	        $tr.eq(i).show();
+        }
+
+    });
+
+    var decimal_page = 0;
+    $('#pagination a').not('.prev').not('.next').not('.prev_page').not('.next_page').hide();
+
+    for(var i=decimal_page+1; i<=num_pages && i<= decimal_page+10 ; i++){
+        $('#pagination a.'+i).show();
+        //jQuery('#pagination').append("<a class='"+i+"'>"+i+"</a>");
+    }
+
+    $('#pagination a.1').addClass('active');
+    page = 1;
+    jQuery('#pagination a').click(function(e){
+        e.preventDefault();
+        $tr.hide();
+
+        if ($(this).text() == '>') {
+            if ( parseInt(page)+1 <= num_pages )  
+                page=parseInt(page)+1;
+        } else if ($(this).text() == '<') {
+            if ( parseInt(page)-1 > 0 )
+                page=parseInt(page)-1;
+        } else if ($(this).text() == '>>') {
+            var decimal_page = ((((parseInt(page)-1)+10)/10)+"").split(".")[0]*10;
+            if(num_pages > decimal_page) {
+                $('#pagination a').not('.prev').not('.next').not('.prev_page').not('.next_page').hide();
+                for(var i=decimal_page+1; i<=num_pages && i<= decimal_page+10 ; i++){
+                    $('#pagination a.'+i).show();
+                    //jQuery('#pagination').append("<a class='"+i+"'>"+i+"</a>");
+                }
+
+                page = decimal_page+1;
+            }
+        } else if ($(this).text() == '<<') {
+            if((parseInt(page)-10) > 0) {
+                var decimal_page = ((((parseInt(page)-1)-10)/10)+"").split(".")[0]*10;
+
+                $('#pagination a').not('.prev').not('.next').not('.prev_page').not('.next_page').hide();
+                for(var i=decimal_page+1; i<=num_pages && i<= decimal_page+10 ; i++){
+                    $('#pagination a.'+i).show();
+                    //jQuery('#pagination').append("<a class='"+i+"'>"+i+"</a>");
+                }
+
+                page = decimal_page+1;
+            }
+        } else 
+            page=parseInt(jQuery(this).text());
+        
+        if($(this).text() != ">>" && $(this).text() != "<<") {
+            var decimal_page = (((parseInt(page) - 1)/10)+"").split(".")[0]*10;
+            $('#pagination a').not('.prev').not('.next').not('.prev_page').not('.next_page').hide();
+
+            for(var i=decimal_page+1; i<=num_pages && i<= decimal_page+10 ; i++){
+                $('#pagination a.'+i).show();
+                //jQuery('#pagination').append("<a class='"+i+"'>"+i+"</a>");
+            }
+        }
+
+        $('#pagination a').removeClass("active");
+        $('#pagination a.'+page).addClass("active");
+        var temp=page-1;
+        var start=temp*req_num_row;
+        //alert(start);
+
+        for(var i=0; i< req_num_row; i++){
+	
+	        $tr.eq(start+i).show();
+
+        }
+    });
+
+    if(page_url != '') {
+        page = page_url;
+        $tr.hide();
+
+        var decimal_page = (((parseInt(page) - 1)/10)+"").split(".")[0]*10;
+        $('#pagination a').not('.prev').not('.next').not('.prev_page').not('.next_page').hide();
+
+        for(var i=decimal_page+1; i<=num_pages && i<= decimal_page+10 ; i++){
+            $('#pagination a.'+i).show();
+            //jQuery('#pagination').append("<a class='"+i+"'>"+i+"</a>");
+        }
+     
+        $('#pagination a').removeClass("active");
+        $('#pagination a.'+page).addClass("active");
+        var temp=page-1;
+        var start=temp*req_num_row;
+        //alert(start);
+
+        for(var i=0; i< req_num_row; i++){
+	        $tr.eq(start+i).show();
+        }
+    }
+
+    $("#pagination").after("<div class='total_num_row'>Total: "+total_num_row+"</div>")
+}
+
+jQuery('document').ready(function(){
+    pagination();
+});
