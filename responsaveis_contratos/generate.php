@@ -3,7 +3,11 @@
 $connect = mysqli_connect('localhost','root','', 'nutrilicia');
 if(isset($_GET['responsavel_id']) and $_GET['responsavel_id'] != '')
     $sql = "SELECT c.id as contrato_id, c.descricao as contrato_descricao, r.id as responsavel_id, r.nome as responsavel_nome, ".
-            "c.filename as filecontrato, rc.filename as filename".
+            "c.filename as filecontrato, rc.filename as filename, ".
+            "r.nacionalidade as responsavel_nacionalidade, r.nascimento as responsavel_nascimento, r.rg as responsavel_rg, ".
+                    "r.cpf as responsavel_cpf, r.cpf as responsavel_relacionamento, r.email as responsavel_email, ".
+                    "r.endereco as responsavel_endereco, r.cep as responsavel_cep, r.telefone as responsavel_telefone, ".
+                    "rc.pacote as pacote, rc.valor as valor, rc.pacelamento as parcelamento, rc.pagamento as pagamento, rc.observacoes as observacoes ".
             "FROM responsaveis_contratos rc ".
                 "left join responsavel r on r.id = rc.responsavel_id ".
                 "left join contrato c on c.id = rc.contrato_id ".
@@ -46,10 +50,6 @@ if($result = mysqli_query($connect, $sql)){
                                  
                     $timestamp = date('d-M-Y H:i:s');
                      echo $message;
-                    r.nacionalidade as responsavel_nacionalidade, r.nascimento as responsavel_nascimento, r.rg as responsavel_rg,
-                    r.cpf as responsavel_cpf, r.cpf as responsavel_relacionamento, r.email as responsavel_email,
-                    r.endereco as responsavel_endereco, r.cep as responsavel_cep, r.telefone as responsavel_telefone,
-                    rc.pacote as pacote, rc.valor as valor, rc.pacelamento as parcelamento, rc.pagamento as pagamento, rc.observacoes as observacoes
 
                     // this data Replace the placeholders with actual values
                     $message = str_replace("#NOME_CONTRATANTE#", $row['responsavel_nome'],       $message);
@@ -63,10 +63,19 @@ if($result = mysqli_query($connect, $sql)){
                     $message = str_replace("#CEP_CONTRATANTE#", $row['responsavel_cep'],           $message); 
                     $message = str_replace("#TELEFONE_CONTRATANTE#", $row['responsavel_telefone'],           $message); 
                     
-                    $message = str_replace("#NOME_ALUNO#", $row['nome'],           $message); 
-                    $message = str_replace("#SERIE_ALUNO#", $row['serie'],           $message); 
-                    $message = str_replace("#DATA_NASCIMENTO_ALUNO#", $row['nascimento'],           $message); 
-                    $message = str_replace("#RESTRICAO_ALIMENTAR_ALUNO#", $row['restricao'],           $message); 
+                    $sql = 'select * from alunos where responsavel_id = '.$_GET['responsavel_id'];                    
+                    if($result = mysqli_query($connect, $sql)){
+                        if(mysqli_num_rows($result) > 0){
+                            $i = 1;
+                            while($row = mysqli_fetch_array($result)){
+                                $message = str_replace("#NOME_ALUNO_".$i."#", $row['nome'],           $message); 
+                                $message = str_replace("#SERIE_ALUNO_".$i."#", $row['serie'],           $message); 
+                                $message = str_replace("#DATA_NASCIMENTO_ALUNO_".$i."#", $row['nascimento'],           $message); 
+                                $message = str_replace("#RESTRICAO_ALIMENTAR_ALUNO_".$i."#", $row['restricao'],           $message); 
+                                $i++;                            
+                            }
+                        }
+                    }
 
                     $message = str_replace("#PACOTE#", $row['pacote'],           $message); 
                     $message = str_replace("#VALOR_TOTAL#", $row['valor'],           $message); 

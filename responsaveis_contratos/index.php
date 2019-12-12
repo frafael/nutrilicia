@@ -1,11 +1,23 @@
 <?php include '../header.php'; ?>
 
         <script>  
-            function remover(id) {
-                popup("Deseja excluir o contrato?",
+           function generate(responsavel_id, contrato_id) {
+                $.get( "generate.php??responsavel_id="+responsavel_id+"&contrato_id="+contrato_id)
+                  .done(function( data ) {
+                    if(data == '') {
+                        alert('Contrato gerado com sucesso.');
+                    } else {
+                        alert('Não foi possível realizar a operação.');                    
+                    }
+                  });
+            }
+            
+            
+            function remover(responsavel_id, contrato_id) {
+                popup("Deseja excluir o contrato para o responsável?",
                     [
                         {"name": "Sim", "action": function(){
-                            $.get( "remove.php?id="+id)
+                            $.get( "remove.php?responsavel_id="+responsavel_id+"&contrato_id="+contrato_id)
                               .done(function( data ) {
                                 if(data == '') {
                                     console.log(data);
@@ -80,7 +92,7 @@
                         <td>
                             <div class="actions">
                                 <i title="Editar" onclick="window.location.href='edit.php?responsavel_id=<?php echo $row['responsavel_id']; ?>&contrato_id=<?php echo $row['contrato_id']; ?>';" class="fa fa-pencil" aria-hidden="true"></i>
-                                <i title="Gerar arquivo" onclick="window.location.href='generate.php?responsavel_id=<?php echo $row['responsavel_id']; ?>&contrato_id=<?php echo $row['contrato_id']; ?>';" class="fa fa-file-word-o" aria-hidden="true"></i>
+                                <i title="Gerar arquivo" onclick="generate(<?php echo $row['responsavel_id']; ?>, <?php echo $row['contrato_id']; ?>)" class="fa fa-file-word-o" aria-hidden="true"></i>
                                 <i title="Baixar contrato" onclick="window.location.href='download.php?responsavel_id=<?php echo $row['responsavel_id']; ?>&contrato_id=<?php echo $row['contrato_id']; ?>';" class="fa fa-download" aria-hidden="true"></i>
                                 <i title="Remover" onclick="remover(<?php echo $row['responsavel_id']; ?>, <?php echo $row['contrato_id']; ?>)" class="fa fa-trash remove" aria-hidden="true"></i>
                             </div>
