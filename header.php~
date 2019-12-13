@@ -6,7 +6,6 @@ if(!isset($_COOKIE['nutrilicia'])){
 
 $connect = mysqli_connect('localhost','root','', 'nutrilicia');
 
-
 ?>
 
 

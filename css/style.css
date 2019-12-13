@@ -326,7 +326,13 @@ table .actions i:hover {
                 padding: 15px 12px;
                 margin-bottom: 15px;                
              }
-                
+
+            .msg.error {
+                color: #b5521f;
+                background: #ffeeee;             
+            }
+            
+
              .msg i {
                 position: absolute;
                 top: 15px;
@@ -341,6 +347,10 @@ table .actions i:hover {
                 cursor: pointer;
             }
 
+            .msg.error i:hover {
+                color: white;
+                background: #b5521f;
+             }
             .title .button {
                 color: white;
                 background: #8bce66;
