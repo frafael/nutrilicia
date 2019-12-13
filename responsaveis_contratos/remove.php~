@@ -3,14 +3,15 @@
 $connect = mysqli_connect('localhost','root','', 'nutrilicia');
 #$db = mysql_select_db('nutrilicia');
 
-if(isset($_GET['id'])) {
-    $id = $_GET['id'];
+if(isset($_GET['responsavel_id'])) {
+    $responsavel_id = $_GET['responsavel_id'];
+    $contrato_id = $_GET['responsavel_id'];
     if($id != '') {
-        $query = "DELETE from responsaveis where id = $id";
+        $query = "DELETE from responsaveis_contratos where responsavel_id = $responsavel_id and contrato_id = $contrato_id";
 
        if (mysqli_query($connect, $query)) {
        } else {
-          echo "Erro ao excluir responsável " . mysqli_error($connect);
+          echo "Erro ao excluir aluno " . mysqli_error($connect);
        }
        mysqli_close($connect);
     } else {

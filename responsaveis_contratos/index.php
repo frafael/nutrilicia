@@ -2,8 +2,9 @@
 
         <script>  
            function generate(responsavel_id, contrato_id) {
-                $.get( "generate.php??responsavel_id="+responsavel_id+"&contrato_id="+contrato_id)
+                $.get( "generate.php?responsavel_id="+responsavel_id+"&contrato_id="+contrato_id)
                   .done(function( data ) {
+                    console.log("|"+data+"|");
                     if(data == '') {
                         alert('Contrato gerado com sucesso.');
                     } else {
@@ -19,6 +20,7 @@
                         {"name": "Sim", "action": function(){
                             $.get( "remove.php?responsavel_id="+responsavel_id+"&contrato_id="+contrato_id)
                               .done(function( data ) {
+                                console.log(data)
                                 if(data == '') {
                                     console.log(data);
                                     window.location.href= 'index.php?status=2&page='+page+'&responsavel_id=<?php echo $_GET['responsavel_id']; ?>';
@@ -46,7 +48,7 @@
             <div class="title">
                 Contratos do Responsável
                 
-                <a class="button" href="new.php?responsavel_id=<?php echo $_GET['responsavel_id'];?>">Novo Aluno</a>
+                <a class="button" href="new.php?responsavel_id=<?php echo $_GET['responsavel_id'];?>">Novo Contrato</a>
             </div>
             
             <?php
@@ -109,7 +111,7 @@
             <div id="pagination"></div>
             <?php
                     } else {
-                            echo ' <div class="no-results"><i class="fa fa-search"></i> Não existem alunos para esse responsável listados.</div>';
+                            echo ' <div class="no-results"><i class="fa fa-search"></i> Não existem contratos para esse responsável listados.</div>';
                     }
                 }                   
             ?>

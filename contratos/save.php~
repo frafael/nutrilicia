@@ -9,13 +9,9 @@ if(isset($_POST['id'])) {
     $id = $_POST['id'];
     $filename = $_POST['filename'];
 } else {
-    $date = new DateTime();
-    $timestamp = $date->getTimestamp(); 
-
     $target_dir = "uploads/";
-    $target_file = $target_dir .$timestamp.'-'.basename($_FILES["file"]["name"]);
-
-    $filename = $timestamp.'-'.basename($_FILES["file"]["name"]);
+    $target_file = $target_dir . basename($_FILES["file"]["name"]);
+    $filename = basename($_FILES["file"]["name"]);
     $uploadOk = 1;
     $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 

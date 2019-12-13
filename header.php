@@ -32,7 +32,7 @@ $connect = mysqli_connect('localhost','root','', 'nutrilicia');
                 text-transform: uppercase;
                 outline: 0;
                 background: #f1f1f1;
-                margin: 5px;
+                margin-top: 15px;   
                 width: 100px;
                 border: 0;
                 padding: 15px;

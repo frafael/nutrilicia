@@ -33,7 +33,7 @@ if(isset($_POST['id'])) {
 
     $i = 0;
     foreach ($nome_aluno as $key => $value) {
-        $query = "INSERT INTO alunos(nome, serie, nascimento, restricao, responsavel_id) VALUES ('$value', '$serie_aluno[$i]', '$restricao_aluno[$i]', '$nascimento_aluno[$i]', $responsavel_id)";      
+        $query = "INSERT INTO alunos(nome, serie, nascimento, restricao, responsavel_id) VALUES ('$value', '$serie_aluno[$i]', '$nascimento_aluno[$i]', '$restricao_aluno[$i]', $responsavel_id)";      
         $insert = mysqli_query($connect, $query);
         $i++;
     }

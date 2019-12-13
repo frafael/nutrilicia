@@ -47,7 +47,7 @@ if(isset($_POST['id'])) {
             if($result = mysqli_query($connect, $sql)){
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_array($result)){
-                        $fileName = $row['ano']."-". $responsavel_id . " - ".$nome.".docx";
+                        $filename = $row['ano']."-". $responsavel_id . " - ".$nome.".docx";
                     }
                 }
             }

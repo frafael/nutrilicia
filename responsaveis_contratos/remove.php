@@ -5,8 +5,12 @@ $connect = mysqli_connect('localhost','root','', 'nutrilicia');
 
 if(isset($_GET['responsavel_id'])) {
     $responsavel_id = $_GET['responsavel_id'];
-    $contrato_id = $_GET['responsavel_id'];
-    if($id != '') {
+    $contrato_id = 'null';
+    if(isset($_GET['contrato_id']) && $_GET['contrato_id']!='' && $_GET['contrato_id'] != 'undefined') {
+        $contrato_id = $_GET['contrato_id'];
+    } 
+
+    if($_GET['responsavel_id'] != '') {
         $query = "DELETE from responsaveis_contratos where responsavel_id = $responsavel_id and contrato_id = $contrato_id";
 
        if (mysqli_query($connect, $query)) {
