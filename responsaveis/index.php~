@@ -11,7 +11,6 @@
                         {"name": "Sim", "action": function(){
                             $.get( "remove.php?id="+id)
                               .done(function( data ) {
-                                alert(data)
                                 if(data == '') {
                                     window.location.href= 'index.php?status=2&page='+page;
                                 } else {

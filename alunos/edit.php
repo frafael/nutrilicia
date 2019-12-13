@@ -7,7 +7,7 @@
             <form id="form" method="post" action="save.php">
                 <?php 
                     if(isset($_GET['id']) and $_GET['id'] != '')
-                        $sql = "SELECT * FROM responsaveis where id = ".$_GET['id'];
+                        $sql = "SELECT * FROM alunos where id = ".$_GET['id'];
                     else
                         echo "<script>window.location.href='index.php';</script>";
                         
@@ -19,12 +19,12 @@
                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>"/>
                     <input type="hidden" name="responsavel_id" value="<?php echo $row['responsavel_id']; ?>"/>
                     <label><span>Nome: </span><input type="text" name="nome" value="<?php echo $row['nome']; ?>" /></label>
-                    <label><span>Nacionalidade: </span><input type="text" name="serie" value="<?php echo $row['serie']; ?>" /></label>
+                    <label><span>Série: </span><input type="text" name="serie" value="<?php echo $row['serie']; ?>" /></label>
                     <label><span>Data de Nascimento: </span><input class="date" type="text" name="nascimento" value="<?php echo $row['nascimento']; ?>" /></label>
-                    <label><span>RG: </span><input type="text" name="restricao" value="<?php echo $row['restricao']; ?>"/></label>
+                    <label><span>Restrição Alimentar: </span><input type="text" name="restricao" value="<?php echo $row['restricao']; ?>"/></label>
                     
                     <div class="actions">
-                        <button type="button" onclick="submitForm('index.php?status=3');">Gravar</button>
+                        <button type="button" onclick="submitForm('index.php?status=3&responsavel_id=<?php echo $row['responsavel_id']; ?>');">Gravar</button>
                         <button type="button" class="secondary" onclick="window.location='index.php?responsavel_id=<?php echo $row['responsavel_id']; ?>';">Cancelar</button>
                     </div>
                     

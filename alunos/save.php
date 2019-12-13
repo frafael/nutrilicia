@@ -13,7 +13,7 @@ $nascimento = $_POST['nascimento'];
 $responsavel_id = $_POST['responsavel_id'];
 
 if(isset($_POST['id'])) {
-    $query = "UPDATE alunos set nome = '$nome', nascimento='$nascimento', restricao='$rg', restricao='$restricao', responsavel_id='$responsavel_id' where id='$id';";   
+    $query = "UPDATE alunos set nome = '$nome', nascimento='$nascimento', restricao='$restricao', responsavel_id='$responsavel_id' where id='$id';";   
     $update = mysqli_query($connect, $query);
 } else {
     $query = "INSERT INTO alunos(nome, serie, nascimento, restricao, responsavel_id) VALUES ('$nome', '$serie', '$restricao', '$nascimento', $responsavel_id)";      

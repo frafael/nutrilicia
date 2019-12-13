@@ -12,7 +12,7 @@ if(isset($_POST['id'])) {
     $query = "UPDATE unidade set descricao = '$descricao' where id='$id';";   
     $update = mysqli_query($connect, $query);
 } else {
-    $query = "INSERT INTO unidade(descricao) VALUES ('$nome')";  
+    $query = "INSERT INTO unidade(descricao) VALUES ('$descricao')";  
     $insert_responsavel = mysqli_query($connect, $query);
 }
  

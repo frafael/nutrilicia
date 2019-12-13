@@ -9,6 +9,11 @@ if(isset($_GET['id'])) {
         $query = "DELETE from responsaveis where id = $id";
 
        if (mysqli_query($connect, $query)) {
+            $query = "DELETE from alunos where responsavel_id = $id";
+            mysqli_query($connect, $query);
+
+            $query = "DELETE from responsaveis_contratos where responsavel_id = $id";
+            mysqli_query($connect, $query);
        } else {
           echo "Erro ao excluir responsável " . mysqli_error($connect);
        }

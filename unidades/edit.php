@@ -2,12 +2,12 @@
 
         <div class="content">   
             <div class="title">
-                Editar Responsável Financeiro
+                Editar Unidade
             </div>         
             <form id="form" method="post" action="save.php">
                 <?php 
                     if(isset($_GET['id']) and $_GET['id'] != '')
-                        $sql = "SELECT * FROM unidades where id = ".$_GET['id'];
+                        $sql = "SELECT * FROM unidade where id = ".$_GET['id'];
                     else
                         echo "<script>window.location.href='index.php';</script>";
                         

@@ -31,6 +31,17 @@
                     </label>
                     <label><span>Observações: </span><textarea name="observacoes"/><?php echo $row['observacoes']; ?></textarea></label>
                     
+                    
+                 <?php 
+                            }
+                        } else {
+                            echo "<script>window.location.href='index.php';</script>";
+                        }
+                    } else {
+                        echo "<script>window.location.href='index.php';</script>";                 
+                    }
+                ?>  
+
                     <div class="session">CONTRATO</div>
                     <label>
                         <span>Modelo: </span>
@@ -44,7 +55,7 @@
                                 if($result = mysqli_query($connect, $sql)){
                                     if(mysqli_num_rows($result) > 0){
                                         while($row = mysqli_fetch_array($result)){
-                                            echo "<option value='".$row['id']."' ".$_GET['contrato_id']==$row['id']?"selected='selected'":"".">";
+                                            echo "<option value='".$row['id']."' ".($_GET['contrato_id']==$row['id']?"selected='selected'":"").">";
                                                 echo $row['descricao'];
                                             echo "</option>";
                                         }
@@ -60,20 +71,11 @@
                     </label>
 
                     <div class="actions">
-                        <button type="button" onclick="submitForm('index.php?status=3');">Gravar</button>
-                        <button type="button" class="secondary" onclick="window.location='index.php?responsavel_id=<?php echo $row['responsavel_id']; ?>';">Cancelar</button>
+                        <button type="button" onclick="submitForm('index.php?status=3&responsavel_id=<?php echo $_GET['responsavel_id']; ?>');">Gravar</button>
+                        <button type="button" class="secondary" onclick="window.location='index.php?responsavel_id=<?php echo $_GET['responsavel_id']; ?>';">Cancelar</button>
                     </div>
-                    
-                 <?php 
-                            }
-                        } else {
-                            echo "<script>window.location.href='index.php';</script>";
-                        }
-                    } else {
-                        echo "<script>window.location.href='index.php';</script>";                 
-                    }
-                ?>  
             </form>
         </div>
 
 <?php include '../footer.php'; ?>
+

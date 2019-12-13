@@ -62,7 +62,7 @@
                 <thead>
                     <tr>
                         <th>Aluno</th>              
-                        <th width="85px">Ações</th>
+                        <th width="60px">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -96,6 +96,9 @@
                     }
                 }                   
             ?>
+            <div class="actions list">
+                <button type="button" class="secondary" onclick="window.location='../responsaveis/index.php';">Voltar</button>
+            </div>
 
         </div>
 <?php include '../footer.php'; ?>

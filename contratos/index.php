@@ -44,7 +44,7 @@
             ?>
 
             <?php
-                $sql = "SELECT * FROM unidade u ";
+                $sql = "SELECT * FROM contratos ";
 
                 if($result = mysqli_query($connect, $sql)){
                     if(mysqli_num_rows($result) > 0){
@@ -53,7 +53,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Unidade</th>
+                        <th>Descricao</th>
                         <th>Ano</th>                 
                         <th width="85px">Ações</th>
                     </tr>

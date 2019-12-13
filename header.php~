@@ -23,29 +23,7 @@ $connect = mysqli_connect('localhost','root','', 'nutrilicia');
             @import url(https://fonts.googleapis.com/css?family=Roboto:300);
             @import url(../css/style.css);
 
-            .content .actions.list {
-                text-align: left;
-            }
-
-            .content .actions.list button {
-                font-family: "Roboto", sans-serif;
-                text-transform: uppercase;
-                outline: 0;
-                background: #f1f1f1;
-                margin: 5px;
-                width: 100px;
-                border: 0;
-                padding: 15px;
-                font-size: 14px;
-                -webkit-transition: all 0.3 ease;
-                transition: all 0.3 ease;
-                cursor: pointer;
-            }
-
-            .content .actions.list button:hover {
-                background: #4CAF50;
-                color: #FFFFFF;
-            }
+        
         </style>
         <script>
             $(function(){

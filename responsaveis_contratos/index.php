@@ -62,12 +62,12 @@
 
             <?php
                 if(isset($_GET['responsavel_id']) and $_GET['responsavel_id'] != '')
-                    $sql = "SELECT c.id as contrato_id, c.descricao as contrato_descricao, r.id as responsavel_id, r.nome as responsavel_nome FROM responsaveis_contratos rc left join responsavel r on r.id = rc.responsavel_id left join contrato c on c.id = rc.contrato_id where responsavel_id = ".$_GET['responsavel_id'];
+                    $sql = "SELECT c.id as contrato_id, c.descricao as contrato_descricao, r.id as responsavel_id, r.nome as responsavel_nome FROM responsaveis_contratos rc left join responsaveis r on r.id = rc.responsavel_id left join contratos c on c.id = rc.contrato_id where responsavel_id = ".$_GET['responsavel_id'];
                 else
                     echo "<script>window.location.href='../responsaveis/index.php';</script>";
 
                 if($result = mysqli_query($connect, $sql)){
-                    
+
                     if(mysqli_num_rows($result) > 0){
             ?>
             <table>
@@ -75,12 +75,12 @@
                     <tr>
                         <th>Responsável</th>              
                         <th>Contrato</th>              
-                        <th width="85px">Ações</th>
+                        <th width="115px">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        while($row = mysqli_fetch_array($result)){
+                        while($row = mysqli_fetch_array($result)) {
                     ?>
                     <tr id="<?php echo $row['contrato_id']; ?>" class="" style="">
                         <td>
@@ -108,12 +108,15 @@
             </table>
             <div id="pagination"></div>
             <?php
-
                     } else {
                             echo ' <div class="no-results"><i class="fa fa-search"></i> Não existem alunos para esse responsável listados.</div>';
                     }
                 }                   
             ?>
+
+            <div class="actions list">
+                <button type="button" class="secondary" onclick="window.location='../responsaveis/index.php';">Voltar</button>
+            </div>
 
         </div>
 <?php include '../footer.php'; ?>
