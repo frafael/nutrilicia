@@ -1,7 +1,7 @@
 <?php 
  
 if(!isset($_COOKIE['nutrilicia'])){
-  #header('Location:../');
+  header('Location:../');
 }
 
 $connect = mysqli_connect('localhost','root','', 'nutrilicia');

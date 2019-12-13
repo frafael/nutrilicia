@@ -8,12 +8,12 @@
         $senha = md5($_POST['senha']);
         $connect = mysqli_connect('localhost','root','', 'nutrilicia');
                    
-        $verifica = mysqli_query($connect, "SELECT * FROM usuarios WHERE login = '$login' AND senha = '$senha'") or die("erro ao selecionar");
+        $verifica = mysqli_query($connect, "SELECT id, login, senha FROM usuarios WHERE login = '$login' AND senha = '$senha'") or die("erro ao selecionar");
           
         if (mysqli_num_rows($verifica)<=0){
             $success=0;
         }else{
-            setcookie("login",$login);
+            setcookie("nutrilicia", $login);
             header('Location:responsaveis/');
         }
 

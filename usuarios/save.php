@@ -25,6 +25,7 @@ if(isset($_POST['id'])) {
         $header = 'index.php?status=3';
 
         if (isset($senha) && $senha != '' && $senha != 'undefined' && $senha == $contrasenha) {
+            $senha = md5($senha);
             $query = "UPDATE usuarios set senha = '$senha' where id=$id;";   
             $update = mysqli_query($connect, $query);
         } else if (isset($senha) && $senha != '' && $senha != 'undefined') {
@@ -40,6 +41,7 @@ if(isset($_POST['id'])) {
     }
 
     if (isset($senha) && $senha != '' && $senha != 'undefined' && $senha == $contrasenha) {
+        $senha = md5($senha);
         $query = "INSERT INTO usuarios(login, senha) VALUES ('$login', '$senha')";  
         $insert = mysqli_query($connect, $query);
         $header = 'index.php?status=1';
